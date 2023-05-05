@@ -35,12 +35,12 @@ class _SleepScreenState extends State<SleepScreen> {
                   Row(
                     children: [
                   TextButton(
+                    onHover: (value) => ColorPalette.selectedColor,
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(ColorPalette.buttonColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
-                      
                     ),
-                    onPressed: null, 
+                    onPressed: (){}, 
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Row(
@@ -60,12 +60,12 @@ class _SleepScreenState extends State<SleepScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(children: [
                     TextButton(
+                      onHover: (value) => ColorPalette.selectedColor,
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(ColorPalette.buttonColor),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
-                        
                       ),
-                      onPressed: null, 
+                      onPressed: (){}, 
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Row(
@@ -84,12 +84,12 @@ class _SleepScreenState extends State<SleepScreen> {
                 ),
                 Row(children: [
                   TextButton(
+                    onHover: (value) => ColorPalette.selectedColor,
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(ColorPalette.buttonColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
-                      
                     ),
-                    onPressed: null, 
+                    onPressed:(){}, 
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Row(

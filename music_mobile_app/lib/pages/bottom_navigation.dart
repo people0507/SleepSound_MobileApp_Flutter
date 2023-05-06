@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_mobile_app/constants/colors.dart';
-import 'package:music_mobile_app/main.dart';
 import 'package:music_mobile_app/pages/composer_screen/composer.dart';
 import 'package:music_mobile_app/pages/profile_screen/profile.dart';
 import 'package:music_mobile_app/pages/sleep_screen/sleep.dart';
@@ -56,7 +52,8 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
         
         backgroundColor: ColorPalette.bottomNaviColor,
         type: BottomNavigationBarType.fixed,  
-        currentIndex: _selectedIndex,  
+        currentIndex: _selectedIndex,
+        unselectedItemColor: ColorPalette.unselectedColor,
         selectedItemColor: ColorPalette.selectedColor,  
         iconSize: 30,  
         onTap: _onItemTapped,  

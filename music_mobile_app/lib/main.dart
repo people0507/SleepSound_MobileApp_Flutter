@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
  void initialization() async {
  await Future.delayed(const Duration(seconds: 1));
+    // ignore: avoid_print
     print('go!');
     FlutterNativeSplash.remove();
   }
@@ -144,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   pageController.nextPage(
                     duration: const Duration(microseconds: 1000), 
                     curve: Curves.bounceInOut);
+                  // ignore: avoid_print
                   print(currentIndex);
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBottomNavigation()));

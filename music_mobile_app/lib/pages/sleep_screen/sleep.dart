@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_mobile_app/components/album_box.dart';
 import 'package:music_mobile_app/constants/colors.dart';
+import 'package:music_mobile_app/pages/sleep_screen/detail.dart';
 
 class SleepScreen extends StatefulWidget {
   const SleepScreen({super.key});
@@ -143,7 +144,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            print('1');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
                         },
                       ),
                       AlbumBox(
@@ -153,6 +154,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
+                            // ignore: avoid_print
                             print('2');
                         },
                       ),
@@ -171,6 +173,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Hours',
                         albumCategories: 'Instrumental',
                         onClick: () {
+                            // ignore: avoid_print
                             print('3');
                         },
                       ),
@@ -181,6 +184,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Hours',
                         albumCategories: 'Instrumental',
                         onClick: () {
+                            // ignore: avoid_print
                             print('4');
                         },
                       ),
@@ -199,6 +203,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
+                            // ignore: avoid_print
                             print('5');
                         },
                       ),
@@ -209,6 +214,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
+                            // ignore: avoid_print
                             print('6');
                         },
                       ),

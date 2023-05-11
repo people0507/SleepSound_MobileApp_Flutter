@@ -39,6 +39,7 @@ dependencies:
   card_swiper: ^2.0.4
   smooth_page_indicator: ^1.1.0
   flutter_svg: ^2.0.5
+  sliding_up_panel: ^2.0.0+1
 
  
 

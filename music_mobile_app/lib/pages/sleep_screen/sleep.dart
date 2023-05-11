@@ -145,6 +145,7 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumCategories: 'Instrumental',
                         onClick: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
+                            
                         },
                       ),
                       AlbumBox(

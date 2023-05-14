@@ -1,20 +1,29 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:music_mobile_app/constants/colors.dart';
 import 'package:music_mobile_app/pages/sleep_screen/panel.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({super.key});
-
+  const DetailScreen(
+      {super.key,
+      required this.pathImage,
+      required this.albumTitle,
+      required this.songNumbers,
+      required this.albumNotes,
+      required this.albumCategories,
+      required this.detailPack});
+  final String pathImage;
+  final String albumTitle;
+  final String songNumbers;
+  final String albumNotes;
+  final String albumCategories;
+  final String detailPack;
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,7 +38,12 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
         body: SlidingUpPanel(
           panelBuilder: (controller) => DetailPanel(
-            controller: controller ,
+            albumCategories: widget.albumCategories,
+            albumNotes: widget.albumNotes,
+            albumTitle: widget.albumTitle,
+            pathImage: widget.pathImage,
+            songNumbers: widget.songNumbers,
+            detailPack: widget.detailPack,
           ),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(26),
@@ -37,7 +51,6 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
           maxHeight: 750,
           minHeight: 200,
-          
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(

@@ -144,8 +144,15 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
-                            
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                              pathImage: "assets/images/guitar_camp.png",
+                        albumTitle: 'Guitar Camp',
+                        songNumbers: "7",
+                        albumNotes: 'Songs',
+                        albumCategories: 'Instrumental',
+                        detailPack:"An acoustic mix has been specially selected for you. The camping atmosphere will help you improve your sleep and your body as a whole. Your dreams will be delightful and vivid."
+                            )));
+                           
                         },
                       ),
                       AlbumBox(
@@ -155,8 +162,14 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            // ignore: avoid_print
-                            print('2');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                              pathImage: "assets/images/chill_travel.png",
+                        albumTitle: 'Chill-hop',
+                        songNumbers: "7",
+                        albumNotes: 'Songs',
+                        albumCategories: 'Instrumental',
+                        detailPack:"From 2019-2021, Aviino released three albums with Chillhop Music: Plush (2019), Hologramophone (2020), and Cocoon (2021). Now, the enigmatic and consistent producer is back with..."
+                            )));
                         },
                       ),
                     ],
@@ -174,8 +187,14 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Hours',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            // ignore: avoid_print
-                            print('3');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                             pathImage: "assets/images/night.png",
+                        albumTitle: 'The Night',
+                        songNumbers: "4",
+                        albumNotes: 'Hours',
+                        albumCategories: 'Instrumental',
+                        detailPack:"Evening and Night · The evening sun cast long shadows on the ground. · The sky was ablaze with the fire of the setting sun. ·"
+                            )));
                         },
                       ),
                       AlbumBox(
@@ -185,8 +204,14 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Hours',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            // ignore: avoid_print
-                            print('4');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                            pathImage: "assets/images/sun_rise.png",
+                        albumTitle: 'The Sun Rise',
+                        songNumbers: "4",
+                        albumNotes: 'Hours',
+                        albumCategories: 'Instrumental',
+                        detailPack:"Sunrise (or sunup) is the moment when the upper rim of the Sun appears on the horizon in the morning. The term can also refer to the entire process of the solar disk crossing the horizon and its accompanying atmospheric effects."
+                            )));
                         },
                       ),
                     ],
@@ -204,8 +229,14 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            // ignore: avoid_print
-                            print('5');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                            pathImage: "assets/images/chill_travel.png",
+                        albumTitle: 'Chill Travel',
+                        songNumbers: "7",
+                        albumNotes: 'Songs',
+                        albumCategories: 'Instrumental',
+                        detailPack:"Annual travel insurance provides cover to those travelling on two or more holidays or business trips within a year."
+                            )));
                         },
                       ),
                       AlbumBox(
@@ -215,8 +246,14 @@ class _SleepScreenState extends State<SleepScreen> {
                         albumNotes: 'Songs',
                         albumCategories: 'Instrumental',
                         onClick: () {
-                            // ignore: avoid_print
-                            print('6');
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                            pathImage: "assets/images/lullaby.png",
+                        albumTitle: 'Lullaby',
+                        songNumbers: "7",
+                        albumNotes: 'Songs',
+                        albumCategories: 'Instrumental',
+                        detailPack:"A lullaby or a cradle song, is a soothing song or piece of music that is usually played for (or sung to) children The purposes of lullabies vary."
+                            )));
                         },
                       ),
                     ],

@@ -28,6 +28,8 @@ class _DetailPanelState extends State<DetailPanel> {
   bool change1 = true;
   bool change2 = true;
   bool change3 = true;
+  bool changePlayButton = true;
+  bool changeFavoriteButton = true;
   late final ScrollController controller;
   void swap() {
     setState(() {
@@ -52,6 +54,19 @@ class _DetailPanelState extends State<DetailPanel> {
       change3 = change3 == true ? false : true;
     });
   }
+
+  void swapPlaybutton() {
+    setState(() {
+      changePlayButton = changePlayButton == true ? false : true;
+    });
+  }
+
+  void swapFavoritebutton() {
+    setState(() {
+      changeFavoriteButton = changeFavoriteButton == true ? false : true;
+    });
+  }
+  
 
   @override
   Widget build(BuildContext context) => Container(
@@ -136,17 +151,22 @@ class _DetailPanelState extends State<DetailPanel> {
                                             borderRadius:
                                                 BorderRadius.circular(20))),
                                     backgroundColor: MaterialStateProperty.all(
-                                        ColorPalette.selectedColor)),
-                                onPressed: () {},
+                                      changePlayButton == true ? ColorPalette.selectedColor : ColorPalette.unfavoriteColor
+                                        )),
+                                onPressed: () {
+                                  swapPlaybutton();
+                                },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children:  [
                                     Icon(
-                                      Icons.play_arrow,
-                                      color: Colors.white,
+                                     changePlayButton == true
+                                                      ? Icons.play_arrow
+                                                      : Icons.lock_open_outlined,
+                                                  color: Colors.white,
                                     ),
                                     Text(
-                                      'Play',
+                                      changePlayButton == true ? 'Play':'Unlock',
                                       style: TextStyle(
                                           fontSize: 17, color: Colors.white),
                                     )
@@ -164,16 +184,23 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 BorderRadius.circular(20))),
                                     backgroundColor: MaterialStateProperty.all(
                                         ColorPalette.bottomNaviColor)),
-                                onPressed: () {},
+                                onPressed: () {
+                                  swapFavoritebutton();
+                                },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Image.asset('assets/images/star.png'),
-                                    const Text(
-                                      'Unfavorite',
+                                     Icon(
+                                     changeFavoriteButton == true
+                                                      ? Icons.star
+                                                      : Icons.star_half,
+                                                  color: changeFavoriteButton ? Colors.white : ColorPalette.unfavoriteColor,
+                                    ),
+                                     Text(
+                                      changeFavoriteButton == true ? 'Favorite' : 'UnFavorite',
                                       style: TextStyle(
                                           fontSize: 17,
-                                          color: ColorPalette.unfavoriteColor),
+                                          color: changeFavoriteButton ? Colors.white : ColorPalette.unfavoriteColor ),
                                     )
                                   ],
                                 )),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_mobile_app/components/album_box.dart';
 import 'package:music_mobile_app/constants/colors.dart';
+import 'package:music_mobile_app/pages/sleep_screen/player.dart';
 
 class DetailPanel extends StatefulWidget {
   const DetailPanel({
@@ -167,7 +168,7 @@ class _DetailPanelState extends State<DetailPanel> {
                                     ),
                                     Text(
                                       changePlayButton == true ? 'Play':'Unlock',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 17, color: Colors.white),
                                     )
                                   ],
@@ -262,6 +263,7 @@ class _DetailPanelState extends State<DetailPanel> {
                                     child: TextButton(
                                         onPressed: () {
                                           swap();
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPlayer()));
                                         },
                                         child: Row(
                                           children: [

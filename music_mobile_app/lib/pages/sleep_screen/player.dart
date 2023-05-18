@@ -11,14 +11,56 @@ class MyPlayer extends StatefulWidget {
 }
 
 class _MyPlayerState extends State<MyPlayer> {
-  double _currentSliderValue = 20;
-  bool changePlayButton = true;
-  final player = AudioPlayer();
+  late AudioPlayer audioPlayer;
+  Duration duration = const Duration();
+  Duration position = const Duration();
+  bool isPlaying = false;
 
-  void swapPlaybutton() {
-    setState(() {
-      changePlayButton = changePlayButton == true ? false : true;
+  @override
+  void initState() {
+    super.initState();
+    audioPlayer = AudioPlayer();
+    audioPlayer.onDurationChanged.listen((Duration d) {
+      setState(() {
+        duration = d;
+      });
     });
+    audioPlayer.onPositionChanged.listen((Duration p) {
+      setState(() {
+        position = p;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
+  void _playAudio() async {
+    await audioPlayer.play(AssetSource('audios/test.mp3'));
+    setState(() {
+      isPlaying = true;
+    });
+  }
+
+  void _pauseAudio() async {
+    await audioPlayer.pause();
+    setState(() {
+      isPlaying = false;
+    });
+  }
+
+  void _seekAudio(double value) async {
+    final position = Duration(milliseconds: value.toInt());
+        await audioPlayer.seek(position);
+  }
+
+  String _formatDuration(Duration duration) {
+    final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return '$minutes:$seconds';
   }
 
   @override
@@ -39,8 +81,8 @@ class _MyPlayerState extends State<MyPlayer> {
             ),
             const Text(
               'Guitar Camp',
-              style: TextStyle(
-                  fontSize: 17, color: ColorPalette.detaildesColor),
+              style:
+                  TextStyle(fontSize: 17, color: ColorPalette.detaildesColor),
             ),
             const Text(
               'The Guitars ',
@@ -50,36 +92,58 @@ class _MyPlayerState extends State<MyPlayer> {
                   fontWeight: FontWeight.bold),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 100),
-              child: Slider(
-                      divisions: 5,
-                      max:100,
-                        value: _currentSliderValue,
-                        onChanged: (double value) {
-                          setState(() {
-                            _currentSliderValue = value;
-                          });
-                        }),
+              padding: const EdgeInsets.symmetric(vertical: 50),
+              child: Column(
+                children: [
+                  Slider(
+                    value: position.inMilliseconds.toDouble(),
+                    min: 0.0,
+                    max: duration.inMilliseconds.toDouble(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _seekAudio(value);
+                      });
+                    },
+                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                      _formatDuration(position),
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                                      ),
+                                      Text(
+                      _formatDuration(duration-position),
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                    ),
+                ],
+              ),
             ),
+        
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children:  [ 
-              GestureDetector(
-                onTap: (){
-                },
-                child: const Icon(
-                  Icons.skip_previous,color: Colors.white,size: 50)),
-              GestureDetector(
-                onTap: (){
-                  swapPlaybutton();
-                },
-                child: Icon(
-                  changePlayButton ? Icons.play_arrow : Icons.pause,color: Colors.white,size: 50)),
-              GestureDetector(
-                onTap: (){
-                },
-                child: const Icon(Icons.skip_next,color: Colors.white,size: 50,))
-            ],)
+              children: [
+                     const IconButton(
+              onPressed: null,
+              icon: Icon(Icons.skip_previous,
+                        color: Colors.white, size: 50)),
+                IconButton(
+              onPressed: isPlaying ? _pauseAudio : _playAudio,
+              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,color: Colors.white,size: 50,),
+            ),
+            const IconButton(
+              onPressed: null,
+              icon: Icon(
+                      Icons.skip_next,
+                      color: Colors.white,
+                      size: 50,)),
+              ],
+            )
           ],
         ),
       ),

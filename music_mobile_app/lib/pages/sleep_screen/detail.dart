@@ -12,13 +12,15 @@ class DetailScreen extends StatefulWidget {
       required this.songNumbers,
       required this.albumNotes,
       required this.albumCategories,
-      required this.detailPack});
+      required this.detailPack, required this.nameSong, required this.pathAudio});
   final String pathImage;
   final String albumTitle;
   final String songNumbers;
   final String albumNotes;
   final String albumCategories;
   final String detailPack;
+  final List<String> nameSong;
+  final List<String> pathAudio;
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -44,6 +46,8 @@ class _DetailScreenState extends State<DetailScreen> {
             pathImage: widget.pathImage,
             songNumbers: widget.songNumbers,
             detailPack: widget.detailPack,
+            nameSong: widget.nameSong,
+            pathAudio: widget.pathAudio,
           ),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(26),

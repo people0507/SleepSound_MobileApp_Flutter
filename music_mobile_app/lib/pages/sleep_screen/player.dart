@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:music_mobile_app/constants/colors.dart';
 
 class MyPlayer extends StatefulWidget {
-  const MyPlayer({super.key, this.onClick});
+  const MyPlayer({super.key, this.onClick, required this.nameSong, required this.pathImage, required this.albumTitle, required this.pathAudio});
   final Function? onClick;
+  final String nameSong;
+  final String pathImage;
+  final String albumTitle;
+  final String pathAudio;
 
   @override
   State<MyPlayer> createState() => _MyPlayerState();
@@ -39,7 +43,7 @@ class _MyPlayerState extends State<MyPlayer> {
   }
 
   void _playAudio() async {
-    await audioPlayer.play(AssetSource('audios/test.mp3'));
+    await audioPlayer.play(AssetSource(widget.pathAudio));
     setState(() {
       isPlaying = true;
     });
@@ -74,23 +78,29 @@ class _MyPlayerState extends State<MyPlayer> {
             const SizedBox(
               height: 200,
             ),
-            Image.asset('assets/images/guitar_camp.png'),
+            Image.asset(widget.pathImage,),
             const SizedBox(
               height: 50,
               width: 50,
             ),
-            const Text(
-              'Guitar Camp',
+             Text(
+              widget.albumTitle,
               style:
-                  TextStyle(fontSize: 17, color: ColorPalette.detaildesColor),
+                  const TextStyle(fontSize: 17, color: ColorPalette.detaildesColor),
             ),
-            const Text(
-              'The Guitars ',
-              style: TextStyle(
-                  fontSize: 34,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+            const SizedBox(
+              height: 20,
             ),
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 50),
+               child: Text(
+                widget.nameSong,
+                style: const TextStyle(
+                    fontSize: 34,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+                         ),
+             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 50),
               child: Column(

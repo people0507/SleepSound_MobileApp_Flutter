@@ -11,7 +11,8 @@ class DetailPanel extends StatefulWidget {
     required this.songNumbers,
     required this.albumNotes,
     required this.albumCategories,
-    required this.detailPack,
+    required this.detailPack, required this.nameSong, required this.pathAudio,
+    
   });
   final String pathImage;
   final String albumTitle;
@@ -19,6 +20,8 @@ class DetailPanel extends StatefulWidget {
   final String albumNotes;
   final String albumCategories;
   final String detailPack;
+  final List<String> nameSong;
+  final List<String> pathAudio;
 
   @override
   State<DetailPanel> createState() => _DetailPanelState();
@@ -67,6 +70,31 @@ class _DetailPanelState extends State<DetailPanel> {
       changeFavoriteButton = changeFavoriteButton == true ? false : true;
     });
   }
+
+
+  List<String> listSong = [
+    
+  'Guitar Camp',
+  "There's Nothing Holdin' Me Back",
+  'audios/song1.mp3',
+  'assets/images/guitar_camp.png',
+];
+
+  List<String> listSong1 = [
+  'Guitar Camp',
+  "There's Nothing Holdin' Me Back",
+  'audios/song2.mp3',
+  'assets/images/guitar_camp.png',
+];
+
+  List<String> listSong2 = [
+  'Guitar Camp',
+  "There's Nothing Holdin' Me Back",
+  'audios/song3.mp3',
+  'assets/images/guitar_camp.png',
+];
+
+
   
 
   @override
@@ -152,22 +180,25 @@ class _DetailPanelState extends State<DetailPanel> {
                                             borderRadius:
                                                 BorderRadius.circular(20))),
                                     backgroundColor: MaterialStateProperty.all(
-                                      changePlayButton == true ? ColorPalette.selectedColor : ColorPalette.unfavoriteColor
-                                        )),
+                                        changePlayButton == true
+                                            ? ColorPalette.selectedColor
+                                            : ColorPalette.unfavoriteColor)),
                                 onPressed: () {
                                   swapPlaybutton();
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children:  [
+                                  children: [
                                     Icon(
-                                     changePlayButton == true
-                                                      ? Icons.play_arrow
-                                                      : Icons.lock_open_outlined,
-                                                  color: Colors.white,
+                                      changePlayButton == true
+                                          ? Icons.play_arrow
+                                          : Icons.lock_open_outlined,
+                                      color: Colors.white,
                                     ),
                                     Text(
-                                      changePlayButton == true ? 'Play':'Unlock',
+                                      changePlayButton == true
+                                          ? 'Play'
+                                          : 'Unlock',
                                       style: const TextStyle(
                                           fontSize: 17, color: Colors.white),
                                     )
@@ -191,17 +222,23 @@ class _DetailPanelState extends State<DetailPanel> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                     Icon(
-                                     changeFavoriteButton == true
-                                                      ? Icons.star
-                                                      : Icons.star_half,
-                                                  color: changeFavoriteButton ? Colors.white : ColorPalette.unfavoriteColor,
+                                    Icon(
+                                      changeFavoriteButton == true
+                                          ? Icons.star
+                                          : Icons.star_half,
+                                      color: changeFavoriteButton
+                                          ? Colors.white
+                                          : ColorPalette.unfavoriteColor,
                                     ),
-                                     Text(
-                                      changeFavoriteButton == true ? 'Favorite' : 'UnFavorite',
+                                    Text(
+                                      changeFavoriteButton == true
+                                          ? 'Favorite'
+                                          : 'UnFavorite',
                                       style: TextStyle(
                                           fontSize: 17,
-                                          color: changeFavoriteButton ? Colors.white : ColorPalette.unfavoriteColor ),
+                                          color: changeFavoriteButton
+                                              ? Colors.white
+                                              : ColorPalette.unfavoriteColor),
                                     )
                                   ],
                                 )),
@@ -263,7 +300,17 @@ class _DetailPanelState extends State<DetailPanel> {
                                     child: TextButton(
                                         onPressed: () {
                                           swap();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPlayer()));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                       MyPlayer(
+                                                         albumTitle: widget.albumTitle,
+                                                        nameSong: widget.nameSong[0],
+                                                        pathAudio: widget.pathAudio[0],
+                                                        pathImage: widget.pathImage,
+                                                      )));
+        
                                         },
                                         child: Row(
                                           children: [
@@ -295,10 +342,13 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 ),
                                               ),
                                             ),
-                                            const Text('The Guitars ',
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.white))
+                                             Expanded(
+                                               child: Text(widget.nameSong[0],
+                                                  style: const TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.white),
+                                                      overflow: TextOverflow.ellipsis),
+                                             )
                                           ],
                                         )),
                                   ),
@@ -313,6 +363,16 @@ class _DetailPanelState extends State<DetailPanel> {
                                     child: TextButton(
                                         onPressed: () {
                                           swap1();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                       MyPlayer(
+                                                        albumTitle: widget.albumTitle,
+                                                        nameSong: widget.nameSong[1],
+                                                        pathAudio: widget.pathAudio[1],
+                                                        pathImage: widget.pathImage,
+                                                      )));
                                         },
                                         child: Row(
                                           children: [
@@ -344,10 +404,14 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 ),
                                               ),
                                             ),
-                                            const Text('Lost Without You',
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.white))
+                                             Expanded(
+                                               child: Text(widget.nameSong[1],
+                                                  style: const TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.white
+                                                      ),
+                                                      overflow: TextOverflow.ellipsis),
+                                             )
                                           ],
                                         )),
                                   ),
@@ -362,6 +426,16 @@ class _DetailPanelState extends State<DetailPanel> {
                                     child: TextButton(
                                         onPressed: () {
                                           swap2();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                       MyPlayer(
+                                                         albumTitle: widget.albumTitle,
+                                                        nameSong: widget.nameSong[2],
+                                                        pathAudio: widget.pathAudio[2],
+                                                        pathImage: widget.pathImage,
+                                                      )));
                                         },
                                         child: Row(
                                           children: [
@@ -393,10 +467,13 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 ),
                                               ),
                                             ),
-                                            const Text('City Lights',
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.white))
+                                             Expanded(
+                                               child: Text(widget.nameSong[2],
+                                                  style: const TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.white),
+                                                      overflow: TextOverflow.ellipsis),
+                                             )
                                           ],
                                         )),
                                   ),
@@ -406,6 +483,16 @@ class _DetailPanelState extends State<DetailPanel> {
                                     child: TextButton(
                                         onPressed: () {
                                           swap3();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                       MyPlayer(
+                                                         albumTitle: widget.albumTitle,
+                                                        nameSong: widget.nameSong[3],
+                                                        pathAudio: widget.pathAudio[3],
+                                                        pathImage: widget.pathImage,
+                                                      )));
                                         },
                                         child: Row(
                                           children: [
@@ -437,10 +524,13 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 ),
                                               ),
                                             ),
-                                            const Text('Romantic',
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.white))
+                                             Expanded(
+                                               child: Text(widget.nameSong[3],
+                                                  style: const TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.white),
+                                                      overflow: TextOverflow.ellipsis),
+                                             )
                                           ],
                                         )),
                                   )

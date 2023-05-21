@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:music_mobile_app/constants/colors.dart';
+import 'package:music_mobile_app/constants/images.dart';
 import 'package:music_mobile_app/models/start_screen.dart';
 import 'package:music_mobile_app/pages/bottom_navigation.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -10,7 +11,7 @@ void main() {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }
-
+ 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -159,14 +160,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.white
               ),),),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/images/google_icon.png'),
-                    const Text('   '),
-                    const Text('Login with Google',
+                    Image(image: AssetImage(Imgs.googleicon)),
+                     Text('   '),
+                    Text('Login with Google',
                     style: TextStyle(fontSize: 16,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),)

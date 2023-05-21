@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_mobile_app/components/album_box.dart';
 import 'package:music_mobile_app/constants/colors.dart';
+import 'package:music_mobile_app/constants/images.dart';
 import 'package:music_mobile_app/pages/sleep_screen/player.dart';
 
 class DetailPanel extends StatefulWidget {
@@ -72,30 +73,6 @@ class _DetailPanelState extends State<DetailPanel> {
   }
 
 
-  List<String> listSong = [
-    
-  'Guitar Camp',
-  "There's Nothing Holdin' Me Back",
-  'audios/song1.mp3',
-  'assets/images/guitar_camp.png',
-];
-
-  List<String> listSong1 = [
-  'Guitar Camp',
-  "There's Nothing Holdin' Me Back",
-  'audios/song2.mp3',
-  'assets/images/guitar_camp.png',
-];
-
-  List<String> listSong2 = [
-  'Guitar Camp',
-  "There's Nothing Holdin' Me Back",
-  'audios/song3.mp3',
-  'assets/images/guitar_camp.png',
-];
-
-
-  
 
   @override
   Widget build(BuildContext context) => Container(
@@ -560,7 +537,7 @@ class _DetailPanelState extends State<DetailPanel> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               AlbumBox(
-                                pathImage: "assets/images/bear.png",
+                                pathImage: Imgs.bear,
                                 albumTitle: 'Chill-hop',
                                 songNumbers: "7",
                                 albumNotes: 'Songs',
@@ -568,7 +545,7 @@ class _DetailPanelState extends State<DetailPanel> {
                                 onClick: () {},
                               ),
                               AlbumBox(
-                                pathImage: "assets/images/lullaby.png",
+                                pathImage: Imgs.lullaby,
                                 albumTitle: 'Lullaby',
                                 songNumbers: "7",
                                 albumNotes: 'Songs',

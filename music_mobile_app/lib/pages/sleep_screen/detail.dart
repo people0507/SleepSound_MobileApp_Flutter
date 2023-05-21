@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:music_mobile_app/constants/images.dart';
 import 'package:music_mobile_app/pages/sleep_screen/panel.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -58,7 +59,7 @@ class _DetailScreenState extends State<DetailScreen> {
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/detail.png'),
+                image: AssetImage(Imgs.detail),
                 fit: BoxFit.cover,
               ),
             ),
@@ -72,7 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       Column(
                         children: [
-                          Image.asset('assets/images/sleep.png'),
+                          Image(image: AssetImage(Imgs.sleep)),
                           const Text(
                             'Mood',
                             style: TextStyle(
@@ -93,7 +94,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       const Text('     '),
                       Column(
                         children: [
-                          Image.asset('assets/images/dreams.png'),
+                          Image(image: AssetImage(Imgs.dreams)),
                           const Text(
                             'Dreams',
                             style: TextStyle(fontSize: 13, color: Colors.white),

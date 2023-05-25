@@ -28,7 +28,7 @@ class _SleepScreenState extends State<SleepScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 100, bottom: 10),
+                  padding: EdgeInsets.only(top: 50, bottom: 10),
                   child: Text(
                     'Sleep',
                     style: TextStyle(

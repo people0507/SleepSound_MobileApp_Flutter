@@ -158,8 +158,8 @@ class _DetailPanelState extends State<DetailPanel> {
                                                 BorderRadius.circular(20))),
                                     backgroundColor: MaterialStateProperty.all(
                                         changePlayButton == true
-                                            ? ColorPalette.selectedColor
-                                            : ColorPalette.unfavoriteColor)),
+                                            ? ColorPalette.unfavoriteColor
+                                            : ColorPalette.selectedColor)),
                                 onPressed: () {
                                   swapPlaybutton();
                                 },
@@ -168,14 +168,14 @@ class _DetailPanelState extends State<DetailPanel> {
                                   children: [
                                     Icon(
                                       changePlayButton == true
-                                          ? Icons.play_arrow
-                                          : Icons.lock_open_outlined,
+                                          ? Icons.lock_open_outlined
+                                          : Icons.play_arrow,
                                       color: Colors.white,
                                     ),
                                     Text(
                                       changePlayButton == true
-                                          ? 'Play'
-                                          : 'Unlock',
+                                          ? 'Unlock'
+                                          : 'Play  ',
                                       style: const TextStyle(
                                           fontSize: 17, color: Colors.white),
                                     )

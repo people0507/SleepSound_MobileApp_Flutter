@@ -74,107 +74,109 @@ class _MyHomePageState extends State<MyHomePage> {
     return  SafeArea(
       child: Scaffold(
         backgroundColor: ColorPalette.backgroundColor,
-        body: Column(
-          children: [
-            SizedBox(
-              width: 500,
-              height: 600,
-              child: Column(
-                children: [
-                  const Spacer(),
-                  SizedBox(
-                    width: 400,
-                    height: 500,
-                    child: PageView.builder(
-                      itemCount: 3,
-                      controller: pageController,
-                      itemBuilder:(context, index) {
-                        return Column(
-                          children: [
-                            Image.asset(startscreenList[index].images),
-                              SizedBox(
-                                width: 350,
-                                height: 150,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 20),
-                                  child: Column(
-                                    children: [
-                                      Text(startscreenList[index].titles,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 34,
-                                        fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,),
-                                        const Spacer(),
-                                      Text(startscreenList[index].descriptions,style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        ),
-                                        textAlign: TextAlign.center,),
-                                    ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                width: 500,
+                height: 600,
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    SizedBox(
+                      width: 400,
+                      height: 500,
+                      child: PageView.builder(
+                        itemCount: 3,
+                        controller: pageController,
+                        itemBuilder:(context, index) {
+                          return Column(
+                            children: [
+                              Image.asset(startscreenList[index].images),
+                                SizedBox(
+                                  width: 350,
+                                  height: 150,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        Text(startscreenList[index].titles,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 34,
+                                          fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,),
+                                          const Spacer(),
+                                        Text(startscreenList[index].descriptions,style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 17,
+                                          ),
+                                          textAlign: TextAlign.center,),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              
-                          ],
-                        );
-                      },)
+                                
+                            ],
+                          );
+                        },)
+                    ),
+                    
+                ]),
+              ),
+        
+              Padding(
+                padding: const EdgeInsets.only(bottom:30),
+                child: SmoothPageIndicator(
+                  controller: pageController, 
+                  count: 3,
+                  effect: const ScrollingDotsEffect(
+                    activeDotColor: ColorPalette.dotColor,
+                    dotHeight: 8,
+                    dotWidth: 8),),
+              ),
+              TextButton(
+                style:ButtonStyle(
+                  backgroundColor: const MaterialStatePropertyAll(ColorPalette.buttonColor),
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 20,horizontal: 150)),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
+                ) ,
+              onPressed: (){
+                setState(() {
+                  if(currentIndex < 2) {
+                    currentIndex = currentIndex + 1;
+                    pageController.nextPage(
+                      duration: const Duration(microseconds: 1000), 
+                      curve: Curves.bounceInOut);
+                    // ignore: avoid_print
+                    print(currentIndex);
+                  } else {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBottomNavigation()));
+                  }
+                });
+              },
+                child: const Text('Next',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
+                ),),),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(image: AssetImage(Imgs.googleicon)),
+                       Text('   '),
+                      Text('Login with Google',
+                      style: TextStyle(fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),)
+                    ],
                   ),
-                  
-              ]),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(bottom:30),
-              child: SmoothPageIndicator(
-                controller: pageController, 
-                count: 3,
-                effect: const ScrollingDotsEffect(
-                  activeDotColor: ColorPalette.dotColor,
-                  dotHeight: 8,
-                  dotWidth: 8),),
-            ),
-            TextButton(
-              style:ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(ColorPalette.buttonColor),
-                padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 20,horizontal: 150)),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
-              ) ,
-            onPressed: (){
-              setState(() {
-                if(currentIndex < 2) {
-                  currentIndex = currentIndex + 1;
-                  pageController.nextPage(
-                    duration: const Duration(microseconds: 1000), 
-                    curve: Curves.bounceInOut);
-                  // ignore: avoid_print
-                  print(currentIndex);
-                } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBottomNavigation()));
-                }
-              });
-            },
-              child: const Text('Next',
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),),),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image(image: AssetImage(Imgs.googleicon)),
-                     Text('   '),
-                    Text('Login with Google',
-                    style: TextStyle(fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),)
-                  ],
-                ),
-              )
-          ],
+                )
+            ],
+          ),
         ),
       ),
     );

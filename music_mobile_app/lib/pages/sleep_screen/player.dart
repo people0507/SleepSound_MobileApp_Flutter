@@ -19,7 +19,7 @@ class _MyPlayerState extends State<MyPlayer> {
   Duration duration = const Duration();
   Duration position = const Duration();
   bool isPlaying = false;
-
+  
   @override
   void initState() {
     super.initState();
@@ -73,88 +73,90 @@ class _MyPlayerState extends State<MyPlayer> {
       backgroundColor: ColorPalette.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 200,
-            ),
-            Image.asset(widget.pathImage,),
-            const SizedBox(
-              height: 50,
-              width: 50,
-            ),
-             Text(
-              widget.albumTitle,
-              style:
-                  const TextStyle(fontSize: 17, color: ColorPalette.detaildesColor),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-             Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 50),
-               child: Text(
-                widget.nameSong,
-                style: const TextStyle(
-                    fontSize: 34,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-                         ),
-             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50),
-              child: Column(
-                children: [
-                  Slider(
-                    value: position.inMilliseconds.toDouble(),
-                    min: 0.0,
-                    max: duration.inMilliseconds.toDouble(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _seekAudio(value);
-                      });
-                    },
-                  ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                      _formatDuration(position),
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
-                                      ),
-                                      Text(
-                      _formatDuration(duration-position),
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                    ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 200,
               ),
-            ),
-        
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                     const IconButton(
-              onPressed: null,
-              icon: Icon(Icons.skip_previous,
-                        color: Colors.white, size: 50)),
-                IconButton(
-              onPressed: isPlaying ? _pauseAudio : _playAudio,
-              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,color: Colors.white,size: 50,),
-            ),
-            const IconButton(
-              onPressed: null,
-              icon: Icon(
-                      Icons.skip_next,
+              Image.asset(widget.pathImage,),
+              const SizedBox(
+                height: 50,
+                width: 50,
+              ),
+               Text(
+                widget.albumTitle,
+                style:
+                    const TextStyle(fontSize: 17, color: ColorPalette.detaildesColor),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 50),
+                 child: Text(
+                  widget.nameSong,
+                  style: const TextStyle(
+                      fontSize: 34,
                       color: Colors.white,
-                      size: 50,)),
-              ],
-            )
-          ],
+                      fontWeight: FontWeight.bold),
+                           ),
+               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50),
+                child: Column(
+                  children: [
+                    Slider(
+                      value: position.inMilliseconds.toDouble(),
+                      min: 0.0,
+                      max: duration.inMilliseconds.toDouble(),
+                      onChanged: (double value) {
+                        setState(() {
+                          _seekAudio(value);
+                        });
+                      },
+                    ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                        _formatDuration(position),
+                        style: const TextStyle(fontSize: 15, color: Colors.white),
+                                        ),
+                                        Text(
+                        _formatDuration(duration-position),
+                        style: const TextStyle(fontSize: 15, color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                      ),
+                  ],
+                ),
+              ),
+          
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                       const IconButton(
+                onPressed: null,
+                icon: Icon(Icons.skip_previous,
+                          color: Colors.white, size: 50)),
+                  IconButton(
+                onPressed: isPlaying ? _pauseAudio : _playAudio,
+                icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,color: Colors.white,size: 50,),
+              ),
+              const IconButton(
+                onPressed: null,
+                icon: Icon(
+                        Icons.skip_next,
+                        color: Colors.white,
+                        size: 50,)),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
